@@ -17,6 +17,7 @@
 		<property name="hibernate.show_sql">true</property>
 		<property name="hibernate.format_sql">true</property>
 		<property name="org.hibernate">true</property>
+		
 		<mapping class="br.com.model.bean.Chamado"/>
 		<mapping class="br.com.model.bean.Equipamento"/>
 		<mapping class="br.com.model.bean.Fabricante"/>

@@ -1,0 +1,47 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:a4j="http://richfaces.org/a4j"
+    xmlns:rich="http://richfaces.org/rich">
+
+    <style>
+    .pic {
+        margin-bottom: -4px;
+        margin-right: 2px;        
+    }     
+    .search .rich-menu-item-hover{
+        background-color: transparent;
+        border-color: transparent;
+    }
+     
+    </style>
+    <h:form>
+        <rich:toolBar itemSeparator="grid">
+            <rich:dropDownMenu>
+                <f:facet name="label"> 
+                    <h:panelGroup>
+                        <h:graphicImage value="/include/imagens/page_paste.png"  styleClass="pic"/>
+                        <h:outputText value="Menu"/>
+                    </h:panelGroup>
+                </f:facet>
+                <rich:menuGroup value="Cadastrar">
+                	<rich:menuItem submitMode="ajax" value="Novo Chamado" icon="/include/imagens/page_save.png"  action="addChamado"/>
+                	<rich:menuItem submitMode="ajax" value="Novo Fabricante" icon="/include/imagens/page_save.png" />
+                	<rich:menuItem submitMode="ajax" value="Novo Equipamento" icon="/include/imagens/page_save.png" action="addEquipamento"/>
+                </rich:menuGroup>
+            </rich:dropDownMenu>
+       
+             <rich:toolBarGroup location="right">
+                <rich:dropDownMenu value="Search" direction="bottom-left" styleClass="search">
+                    <rich:menuItem submitMode="none">
+                        <h:inputText value="" id="searchinput"/>
+                        <button type="button">Search</button>
+                    </rich:menuItem>
+                    <rich:menuItem value="Entre com criterio para busca" disabled="true"></rich:menuItem>
+                   </rich:dropDownMenu>
+                </rich:toolBarGroup>
+             </rich:toolBar>
+     </h:form>
+</ui:composition>
+ 

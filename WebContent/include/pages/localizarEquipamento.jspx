@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	      xmlns:ui="http://java.sun.com/jsf/facelets"
+	      xmlns:h="http://java.sun.com/jsf/html"
+	      xmlns:f="http://java.sun.com/jsf/core"
+	      xmlns:a4j="http://richfaces.org/a4j"
+	      xmlns:rich="http://richfaces.org/rich"> 
+	      
+       <!--  Panel para localizar o modelo do Equipamento -->
+          
+    <rich:modalPanel id="panel" width="350" height="200">
+        <f:facet name="header">
+            <h:panelGroup>
+                <h:outputText value="Equipamentos Cadastrados"></h:outputText>
+            </h:panelGroup>
+        </f:facet>
+        <f:facet name="controls">
+            <h:panelGroup>
+                <h:graphicImage value="/include/imagens/cross.png" styleClass="hidelink" id="hidelink"/>
+                <rich:componentControl for="panel" attachTo="hidelink" operation="hide" event="onclick"/>
+            </h:panelGroup>
+        </f:facet>
+        
+         <!--  Tabela com a lista dos equipamentos -->
+         
+       <rich:dataTable value="#{equipamentoBean.equipamentos}" var="equip" rows="20" id="tbEquipamentos" rendered="#{not empty equipamentoBean.equipamentos}">
+        	<f:facet name="header">
+                <h:outputText value="Equiamentos"/>
+             </f:facet>
+             <rich:column>
+                    <f:facet name="header">
+                        <h:outputText value="Fabricante" />
+                    </f:facet>
+                    <h:outputText value="#{equip.fabricante.nome}" id="fabricante"/>
+             </rich:column>
+             <rich:column>
+                    <f:facet name="header">
+                        <h:outputText value="Modelo" />
+                    </f:facet>
+                    <h:outputText value="#{equip.modelo}" id="modelo"/>
+             </rich:column>
+             <rich:column>
+                    <f:facet name="header">
+                        <h:outputText value="Tipo" />
+                    </f:facet>
+                    <h:outputText value="#{equip.tipo}" id="tipo"/>
+             </rich:column>
+			 <rich:column>
+                    <f:facet name="header">
+                        <h:outputText value="Service Tag" />
+                    </f:facet>
+                    <h:outputText value="#{equip.service_tag}" id="service_tag" />
+             </rich:column>
+             <rich:column>
+                    <f:facet name="header">Ação</f:facet>
+                      <h:commandLink onclick="Richfaces.hideModalPanel('panel')">
+                     	<h:graphicImage value="/include/imagens/ativar.png" title="OK"></h:graphicImage>
+                     	<f:setPropertyActionListener value="#{equip}" target="#{chamadoBean.chamado.equipamento}"/>
+                     	<!-- <f:setPropertyActionListener value="#{equip.id}" target="#{chamadoBean.chamado.equipamento.id}"/>  -->
+                     </h:commandLink>
+             </rich:column>
+       
+       </rich:dataTable>
+    </rich:modalPanel>    
+    <a4j:commandButton image="/include/imagens/magnifier.png"
+		       		                 oncomplete="javascript:Richfaces.showModalPanel('panel');"/>
+</ui:composition> 

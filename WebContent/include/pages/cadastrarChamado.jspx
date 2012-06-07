@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:a4j="http://richfaces.org/a4j"
+      xmlns:rich="http://richfaces.org/rich">
+    
+    <h:form id="frmCadastrar">
+    <h:messages layout="table" errorStyle="color: red" infoStyle="color: blue" fatalStyle="color: gray" showDetail="true"></h:messages>
+         <fieldset>
+	  <legend><b><h3>Cadastrar Chamado</h3></b></legend>
+	   <table align="left">
+       <tr>
+	       	<td><h:outputLabel value="Numero: *" /></td>
+	       	<td><h:panelGroup>
+	       		<h:inputText id="numero" value="#{chamadoBean.chamado.nroChamado}"/>
+	       		<h:message for="numero" infoStyle="color: blue"></h:message>
+	       		</h:panelGroup>
+	       		</td>
+       </tr>
+       <tr>
+	       	<td><h:outputLabel value="Data de Abertura: *"/></td>
+	       	<td><h:panelGroup>
+	       	<rich:calendar id="data" value="#{chamadoBean.chamado.data}" datePattern="dd/MM/yyyy"></rich:calendar>
+	       	<h:message for="data" infoStyle="color: blue"></h:message>
+	       	</h:panelGroup></td>
+       </tr>
+       <tr>
+	       	<td><h:outputLabel value="Equipamento: *"/></td>
+	       	<td><h:panelGroup>
+	       		<h:inputText value="#{chamadoBean.chamado.equipamento.modelo}" id="equpId" disabled="true"/>
+	       		<h:inputHidden value="#{chamadoBean.chamado.equipamento.id}"></h:inputHidden>
+	       	    <ui:include src="/include/pages/localizarEquipamento.jspx" /> 
+	       	    <h:message for="equpId" infoStyle="color: blue"></h:message>
+	       	    </h:panelGroup>
+	       	    </td>
+       </tr>
+       <tr>
+	       	<td><h:outputLabel value="Status:"/></td>
+	       	<td><h:panelGroup>
+	       		<rich:comboBox id="status" value="#{chamadoBean.chamado.status}">
+	       			<f:selectItems value="#{chamadoBean.tipoStatus}"/>
+	       		</rich:comboBox>
+	       	    <h:message for="status" showSummary="true" showDetail="false"></h:message>
+	       	    </h:panelGroup> </td>
+        </tr>
+        <tr>
+	       	<td><h:outputLabel value="Categoria:"/></td>
+	       	<td><h:panelGroup>
+				<h:selectOneRadio id="tipo" value="#{chamadoBean.chamado.categoria}">
+					<f:selectItems value="#{chamadoBean.manutencao}"/>
+				</h:selectOneRadio>
+				<h:message for="tipo" showSummary="true" showDetail="false"></h:message>
+			</h:panelGroup></td>
+       </tr>
+        <tr>
+	       	<td><h:outputLabel value="Descriçao: *"/></td>
+	       	<td><rich:editor id="descricao" width="400" height="300"
+	       					 value="#{chamadoBean.chamado.descricao}"/>
+	       	</td>
+       </tr>
+       <tr>
+	       	<td><h:commandButton id="cad" value="Cadastrar" action="#{chamadoBean.salvar}"/></td>
+       </tr>
+	   </table>
+      </fieldset>      
+   </h:form> 
+    <rich:modalPanel id="panel1" width="350" height="200">
+        <f:facet name="header">
+            <h:panelGroup>
+                <h:outputText value="Equipamentos Cadastrados"></h:outputText>
+            </h:panelGroup>
+        </f:facet>
+        <f:facet name="controls">
+            <h:panelGroup>
+                <h:graphicImage value="/include/imagens/cross.png" styleClass="hidelink" id="hidelink"/>
+                <rich:componentControl for="panel" attachTo="hidelink" operation="hide" event="onclick"/>
+            </h:panelGroup>
+        </f:facet>
+        
+         <!--  Tabela com a lista dos equipamentos -->
+         
+       <rich:dataTable value="#{equipamentoBean.equipamentos}" var="equip" rows="20" id="tbEquipamentos" rendered="#{not empty equipamentoBean.equipamentos}">
+        	<f:facet name="header">
+                <h:outputText value="Equiamentos"/>
+             </f:facet>
+             <rich:column>
+                    <f:facet name="header">
+                        <h:outputText value="Fabricante" />
+                    </f:facet>
+                    <h:outputText value="#{equip.fabricante.nome}" id="fabricante" />
+             </rich:column>
+             <rich:column>
+                    <f:facet name="header">
+                        <h:outputText value="Modelo" />
+                    </f:facet>
+                    <h:outputText value="#{equip.modelo}" id="modelo" />
+             </rich:column>
+             <rich:column>
+                    <f:facet name="header">
+                        <h:outputText value="Tipo" />
+                    </f:facet>
+                    <h:outputText value="#{equip.tipo}" id="tipo" />
+             </rich:column>
+			 <rich:column>
+                    <f:facet name="header">
+                        <h:outputText value="Service Tag" />
+                    </f:facet>
+                    <h:outputText value="#{equip.service_tag}" id="service_tag" />
+             </rich:column>
+             <rich:column>
+                    <f:facet name="header">Ação</f:facet>
+                     <h:commandLink onclick="Richfaces.hideModalPanel('panel')" action="#{chamadoBean.teste}">
+                     	<h:graphicImage value="/include/imagens/ativar.png" title="OK"></h:graphicImage>
+                     	<f:setPropertyActionListener value="#{equip.id}" target="#{chamadoBean.equipamento.id}"/>
+                     </h:commandLink>
+             </rich:column>       
+       </rich:dataTable>
+    </rich:modalPanel>  
+     
+</ui:composition>
+
+

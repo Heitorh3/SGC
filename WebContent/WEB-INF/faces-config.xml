@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<faces-config
+    xmlns="http://java.sun.com/xml/ns/javaee"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-facesconfig_1_2.xsd"
+    version="1.2">
+<application>
+	<view-handler>com.sun.facelets.FaceletViewHandler</view-handler>
+</application>
+<managed-bean>
+	<managed-bean-name>chamadoBean</managed-bean-name>
+	<managed-bean-class>br.com.model.view.ChamadoBean</managed-bean-class>
+	<managed-bean-scope>request</managed-bean-scope>
+</managed-bean>
+<managed-bean>
+	<managed-bean-name>skinBean</managed-bean-name>
+	<managed-bean-class>br.com.model.view.SkinBean</managed-bean-class>
+	<managed-bean-scope>session</managed-bean-scope>
+</managed-bean>
+<managed-bean>
+	<managed-bean-name>equipamentoBean</managed-bean-name>
+	<managed-bean-class>br.com.model.view.EquipamentoBean</managed-bean-class>
+	<managed-bean-scope>session</managed-bean-scope>
+</managed-bean>
+<navigation-rule>
+	<display-name>menu</display-name>
+	<from-view-id>/menu.jspx</from-view-id>
+	<navigation-case>
+		<from-outcome>addChamado</from-outcome>
+		<to-view-id>/cadastrar_Chamado.jspx</to-view-id>
+	</navigation-case>
+</navigation-rule>
+<navigation-rule>
+	<display-name>progress</display-name>
+	<from-view-id>/progress.jspx</from-view-id>
+	<navigation-case>
+	    <from-outcome>acesarSistema</from-outcome>
+		<to-view-id>/menu.jspx</to-view-id>
+	</navigation-case>
+</navigation-rule>
+<navigation-rule>
+	<display-name>cadastrar_Chamado</display-name>
+	<from-view-id>/cadastrar_Chamado.jspx</from-view-id>	
+</navigation-rule>
+<navigation-rule>
+	<display-name>cadastrar_Chamado</display-name>
+	<from-view-id>/cadastrar_Chamado.jspx</from-view-id>
+	<navigation-case>
+		<from-outcome>localizarEquipamento</from-outcome>
+		<to-view-id>/localizar_equipamento.jspx</to-view-id>
+	</navigation-case>
+</navigation-rule>
+<navigation-rule>
+	<display-name>menu</display-name>
+	<from-view-id>/menu.jspx</from-view-id>
+	<navigation-case>
+		<from-outcome>addEquipamento</from-outcome>
+		<to-view-id>/cadastrar_Equipamento.jspx</to-view-id>
+	</navigation-case>
+</navigation-rule>
+</faces-config>

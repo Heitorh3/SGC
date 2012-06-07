@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:a4j="http://richfaces.org/a4j"
+      xmlns:rich="http://richfaces.org/rich">
+    
+    <h:form id="frmCadastrarEquipamento">
+    <h:messages layout="table" errorStyle="color: red" infoStyle="color: blue" fatalStyle="color: gray" showDetail="true"></h:messages>
+         <fieldset>
+	  <legend><b><h3>Cadastrar Equipamento</h3></b></legend>
+	   <table align="left">
+       <tr>
+	       	<td><h:outputLabel value="Fabricante: *"/></td>
+	       	<td><h:panelGroup>
+	       	<h:inputText id="fabricante" value="#{equipamentoBean.equipamento.fabricante}"/>
+	       	<h:message for="data" infoStyle="color: blue"></h:message>
+	       	</h:panelGroup></td>
+       </tr>
+       <tr>
+	       	<td><h:outputLabel value="Modelo: *"/></td>
+	       	<td><h:panelGroup>
+	       		<h:inputText id="modelo" value="#{equipamentoBean.equipamento.modelo}"/>
+	       	    <h:message for="modelo" infoStyle="color: blue"></h:message>
+	       	    </h:panelGroup>
+	       	    </td>
+       </tr>
+       <tr>
+	       	<td><h:outputLabel value="Service tag: *"/></td>
+	       	<td><h:panelGroup>
+	       		<h:inputText id="service_tag" value="#{equipamentoBean.equipamento.service_tag}" />
+	       	    <h:message for="service_tag" showSummary="true" showDetail="false"></h:message>
+	       	    </h:panelGroup></td>
+        </tr>
+        <tr>
+	       	<td><h:outputLabel value="Tipo"/></td>
+	       	<td><h:panelGroup>
+				<h:inputText id="tipo" value="#{equipamentoBean.equipamento.tipo}"></h:inputText>
+				<h:message for="tipo" showSummary="true" showDetail="false"></h:message>
+			</h:panelGroup></td>
+       </tr>
+       <tr>
+	       	<td><h:commandButton id="cad" value="Cadastrar"/></td>
+       </tr>
+	   </table>
+      </fieldset>      
+   </h:form> 
+</ui:composition>
+
+

@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:a4j="http://richfaces.org/a4j"
+      xmlns:rich="http://richfaces.org/rich" markupType="jspx"
+      contentType="text/html">
+    
+    <rich:panel>
+        <f:facet name="header">
+         <h:panelGroup>
+            <table width="95%"><tbody><tr>
+                <td><h2 align="center">Sistema de Gerênciamento de Chamados - <ui:insert name="header"/> </h2></td>
+                <td align="right">
+                <h:form>
+                    <h:commandLink value="Ruby">
+                    	<a4j:actionparam name="skin" value="ruby" assignTo="#{skinBean.skin}" submitMode="ajax"/>
+                    </h:commandLink>
+                       <rich:spacer width="20" />
+                    
+                     <h:commandLink value="Wine">
+                    	<a4j:actionparam name="skin" value="wine" assignTo="#{skinBean.skin}" submitMode="ajax"/>
+                    </h:commandLink>
+                       <rich:spacer width="20" />
+                    
+                    <h:commandLink value="DeepMarine" >
+		                <a4j:actionparam name="skin" value="deepMarine" assignTo="#{skinBean.skin}" submitMode="ajax"/>
+		            </h:commandLink>
+		                <rich:spacer width="20" />
+                    
+                    <h:commandLink value="Classic">
+                    	<a4j:actionparam name="skin" value="classic" assignTo="#{skinBean.skin}" submitMode="ajax"/>
+                    </h:commandLink>
+                        <rich:spacer width="20" />
+                    <h:commandLink value="BlueSky">
+                    	<a4j:actionparam name="skin" value="blueSky" assignTo="#{skinBean.skin}" submitMode="ajax"/>
+                    </h:commandLink>
+                     <rich:spacer width="20" />
+                      <h:commandLink value="Default">
+                    	<a4j:actionparam name="skin" value="DEFAULT" assignTo="#{skinBean.skin}" submitMode="ajax"/>
+                    </h:commandLink>
+                     
+                  </h:form>                    
+                </td>
+            </tr></tbody></table>
+        </h:panelGroup>
+        </f:facet>
+         <ui:include src="/menutoolbar.jspx" /> 
+		    	<rich:panel  bodyClass="rich-laguna-panel-no-header" style=" height: 80%">
+	 					<ui:insert name="corpo"/>
+				</rich:panel>
+        <rich:separator lineType="beveled"/>
+   	 	<h:outputLabel value="Copyright (c) 2011 All rights reserved. Sistema Gerênciador de Chamado - version 2.0"/>&#160;
+   	 	<b><ui:insert name="footer"/></b>
+    </rich:panel>
+</ui:composition>

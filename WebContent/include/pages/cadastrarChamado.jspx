@@ -30,7 +30,7 @@
        <tr>
 	       	<td><h:outputLabel value="Equipamento: *"/></td>
 	       	<td><h:panelGroup>
-	       		<h:inputText value="#{chamadoBean.chamado.equipamento.modelo}" id="equpId" disabled="true"/>
+	       		<h:inputText value="#{chamadoBean.chamado.equipamento.tipo}" id="equpId" disabled="true"/>
 	       		<h:inputHidden value="#{chamadoBean.chamado.equipamento.id}"></h:inputHidden>
 	       	    <ui:include src="/include/pages/localizarEquipamento.jspx" /> 
 	       	    <h:message for="equpId" infoStyle="color: blue"></h:message>

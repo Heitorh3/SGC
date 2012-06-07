@@ -45,7 +45,6 @@ public class HibernateDAO <T> implements InterfaceDAO<T> {
 	}
 
 	public void salvar(T bean) {
-		session.save(bean);
-		
+		session.save(bean);		
 	}
 }
